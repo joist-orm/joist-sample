@@ -1,0 +1,3 @@
+{
+  "extends": "@homebound/tsconfig/tsconfig.json"
+}

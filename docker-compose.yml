@@ -1,0 +1,19 @@
+version: "3.1"
+
+services:
+  db:
+    build:
+      context: ./
+      dockerfile: db.dockerfile
+    ports:
+      - 5436:5432
+    command:
+      - "postgres"
+      - "-c"
+      - "fsync=off"
+
+  db-wait:
+    image: jwilder/dockerize
+    command: dockerize -wait tcp://db:5432 -timeout 1m
+    depends_on:
+      - db

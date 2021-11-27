@@ -1,0 +1,45 @@
+{
+  "name": "joist-ts-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "joist:migrate": "./run.sh ./node_modules/joist-migration-utils",
+    "format": "prettier --write 'src/**/*.{ts,js,tsx,jsx}'",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenh/joist-ts-sample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephenh/joist-ts-sample/issues"
+  },
+  "homepage": "https://github.com/stephenh/joist-ts-sample#readme",
+  "prettier": {
+    "trailingComma": "all",
+    "printWidth": 120
+  },
+  "dependencies": {
+    "joist-codegen": "^1.0.662",
+    "joist-migration-utils": "^1.0.662",
+    "joist-orm": "^1.0.662",
+    "ts-node": "^10.4.0"
+  },
+  "devDependencies": {
+    "@homebound/tsconfig": "^1.0.3",
+    "@types/jest": "^27.0.3",
+    "jest": "^27.3.1",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/*.test.*"
+  ]
+}
