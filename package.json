@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "joist:migrate": "./run.sh ./node_modules/joist-migration-utils",
+    "joist:codegen": "./run.sh ./node_modules/joist-codegen",
     "format": "prettier --write 'src/**/*.{ts,js,tsx,jsx}'",
     "build": "tsc"
   },

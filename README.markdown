@@ -14,5 +14,6 @@
 * Copy/paste `run.sh`
 * Copy/paste `env/local.env`, changed port
 * Add `ts-node`
-* Add `joist:migrate` script
+* Add `joist:migrate` script, run it
+* Add `joist:codegen` script, run it
 
