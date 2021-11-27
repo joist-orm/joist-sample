@@ -11,15 +11,23 @@ if (process.env.STAGE === undefined) {
 
 let knex: Knex;
 
-export function newEntityManager(): EntityManager {
-  knex ??= createKnex({
+function getKnex(): Knex {
+  return (knex ??= createKnex({
     client: "pg",
     connection: newPgConnectionConfig() as any,
     debug: false,
     asyncStackTraces: true,
-  });
-  return new EntityManager({}, new PostgresDriver(knex));
+  }));
 }
+
+export function newEntityManager(): EntityManager {
+  return new EntityManager({}, new PostgresDriver(getKnex()));
+}
+
+beforeEach(async () => {
+  const knex = await getKnex();
+  await knex.select(knex.raw("flush_database()"));
+});
 
 afterAll(async () => {
   if (knex) {
