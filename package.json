@@ -25,6 +25,7 @@
     "printWidth": 120
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "joist-codegen": "^1.0.662",
     "joist-migration-utils": "^1.0.662",
     "joist-orm": "^1.0.662",

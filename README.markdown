@@ -16,4 +16,6 @@
 * Add `ts-node`
 * Add `joist:migrate` script, run it
 * Add `joist:codegen` script, run it
+* Added `Author.test.ts` 
+* Add `dotenv`
 
