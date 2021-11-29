@@ -1,4 +1,12 @@
 
+# Joist Sample App
+
+This is a bare minimum sample app using Joist as an ORM.
+
+There are two domain objects, `Author` and `Book`, and a single test, `Author.test.ts`.
+
+There are no examples of business logic or Joist's various features; for those see the docs.
+
 ## Setup
 
 - `npm i`
@@ -6,6 +14,8 @@
 - `npm test`
 
 ## Example Workflow
+
+A typical workflow for adding a new entity looks like:
 
 - Run `npm run joist-new-migration "add publisher"`
 - Edit the `migrations/...add-publisher.ts` file and add
@@ -19,6 +29,8 @@
 - Copy/paste the `Author.test.ts` and write a test for `Publisher`
 
 ## Steps Taken to Setup This Repo
+
+TODO: Automate this with more, probably with mrm.
 
 - Install basic prettier/TypeScript/jest.
 
