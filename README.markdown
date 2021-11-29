@@ -1,10 +1,34 @@
-## Steps
 
-- Install basic things
+## Setup
+
+- `npm i`
+- `npm run joist-migrate`
+- `npm test`
+
+## Example Workflow
+
+- Run `npm run joist-new-migration "add publisher"`
+- Edit the `migrations/...add-publisher.ts` file and add
+  ```typescript
+  createEntityTable(pgm, "publishers", {
+    name: { type: "text", notNull: true },
+  });
+  ```
+- Run `npm run joist-migrate`
+- Run `npm run joist-codegen`
+- Copy/paste the `Author.test.ts` and write a test for `Publisher`
+
+## Steps Taken to Setup This Repo
+
+- Install basic prettier/TypeScript/jest.
 
   ```shell
+  npm install -g mrm
   npm install -g \
     @homebound/mrm-tasks-prettier \
+    @homebound/mrm-tasks-gitignore \
+    @homebound/mrm-tasks-typescript
+  mrm @homebound/mrm-tasks-prettier \
     @homebound/mrm-tasks-gitignore \
     @homebound/mrm-tasks-typescript
   ```
@@ -19,3 +43,5 @@
 - Add `joist-codegen` script, run it
 - Add `Author.test.ts`
 - Add `dotenv` to `package.json`
+- Add `joist-new-migration` to `package.json`
+- Add `.gitattributes` to suppress diffs on generated files
