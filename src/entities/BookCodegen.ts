@@ -5,6 +5,7 @@ import {
   OrderBy,
   ConfigApi,
   BaseEntity,
+  EntityOrmField,
   EntityManager,
   setOpts,
   PartialOrNull,
@@ -21,7 +22,7 @@ import {
   EntityGraphQLFilter,
   GraphQLFilterOf,
   newRequiredRule,
-  Reference,
+  ManyToOneReference,
   hasOne,
   setField,
 } from "joist-orm";
@@ -70,16 +71,16 @@ bookConfig.addRule(newRequiredRule("updatedAt"));
 bookConfig.addRule(newRequiredRule("author"));
 
 export abstract class BookCodegen extends BaseEntity {
-  readonly __types: {
+  readonly __orm!: EntityOrmField & {
     filterType: BookFilter;
     gqlFilterType: BookGraphQLFilter;
     orderType: BookOrder;
     optsType: BookOpts;
     optIdsType: BookIdsOpts;
     factoryOptsType: Parameters<typeof newBook>[1];
-  } = null!;
+  };
 
-  readonly author: Reference<Book, Author, never> = hasOne(authorMeta, "author", "books");
+  readonly author: ManyToOneReference<Book, Author, never> = hasOne(authorMeta, "author", "books");
 
   constructor(em: EntityManager, opts: BookOpts) {
     super(em, bookMeta, {}, opts);

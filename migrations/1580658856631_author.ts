@@ -1,7 +1,6 @@
 import {
   createCreatedAtFunction,
   createEntityTable,
-  createUnnest2dFunction,
   createUpdatedAtFunction,
   foreignKey,
 } from "joist-migration-utils";

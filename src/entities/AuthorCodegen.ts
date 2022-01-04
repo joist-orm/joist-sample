@@ -5,6 +5,7 @@ import {
   OrderBy,
   ConfigApi,
   BaseEntity,
+  EntityOrmField,
   EntityManager,
   setOpts,
   PartialOrNull,
@@ -66,14 +67,14 @@ authorConfig.addRule(newRequiredRule("createdAt"));
 authorConfig.addRule(newRequiredRule("updatedAt"));
 
 export abstract class AuthorCodegen extends BaseEntity {
-  readonly __types: {
+  readonly __orm!: EntityOrmField & {
     filterType: AuthorFilter;
     gqlFilterType: AuthorGraphQLFilter;
     orderType: AuthorOrder;
     optsType: AuthorOpts;
     optIdsType: AuthorIdsOpts;
     factoryOptsType: Parameters<typeof newAuthor>[1];
-  } = null!;
+  };
 
   readonly books: Collection<Author, Book> = hasMany(bookMeta, "books", "author", "author_id");
 
