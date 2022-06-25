@@ -27,6 +27,7 @@ A typical workflow for adding a new entity looks like:
   });
   ```
 - Run `npm run joist-migrate`
+  - If you change your migration, and want to re-apply it from scratch, run `docker-compose exec db ./reset.sh`
 - Run `npm run joist-codegen`
 - Copy/paste the `Author.test.ts` and write a test for `Publisher`
 
