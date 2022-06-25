@@ -6,8 +6,8 @@ import {
   ConfigApi,
   BaseEntity,
   EntityOrmField,
-  EntityManager,
   setOpts,
+  fail,
   PartialOrNull,
   OptsOf,
   Changes,
@@ -16,7 +16,7 @@ import {
   loadLens,
   LoadHint,
   Loaded,
-  getEm,
+  isLoaded,
   EntityFilter,
   FilterOf,
   EntityGraphQLFilter,
@@ -27,12 +27,18 @@ import {
   setField,
 } from "joist-orm";
 import { Book, newBook, bookMeta, Author, AuthorId, AuthorOrder, authorMeta } from "./entities";
+import type { EntityManager } from "./entities";
 
 export type BookId = Flavor<string, "Book">;
 
-export interface BookOpts {
+export interface BookFields {
   title: string;
   author: Author;
+}
+
+export interface BookOpts {
+  title: string;
+  author: Author | AuthorId;
 }
 
 export interface BookIdsOpts {
@@ -52,7 +58,7 @@ export interface BookGraphQLFilter {
   title?: ValueGraphQLFilter<string>;
   createdAt?: ValueGraphQLFilter<Date>;
   updatedAt?: ValueGraphQLFilter<Date>;
-  author?: EntityGraphQLFilter<Author, AuthorId, GraphQLFilterOf<Author>>;
+  author?: EntityGraphQLFilter<Author, AuthorId, GraphQLFilterOf<Author>, never>;
 }
 
 export interface BookOrder {
@@ -70,12 +76,15 @@ bookConfig.addRule(newRequiredRule("createdAt"));
 bookConfig.addRule(newRequiredRule("updatedAt"));
 bookConfig.addRule(newRequiredRule("author"));
 
-export abstract class BookCodegen extends BaseEntity {
+export abstract class BookCodegen extends BaseEntity<EntityManager> {
+  static defaultValues: object = {};
+
   readonly __orm!: EntityOrmField & {
     filterType: BookFilter;
     gqlFilterType: BookGraphQLFilter;
     orderType: BookOrder;
     optsType: BookOpts;
+    fieldsType: BookFields;
     optIdsType: BookIdsOpts;
     factoryOptsType: Parameters<typeof newBook>[1];
   };
@@ -83,12 +92,24 @@ export abstract class BookCodegen extends BaseEntity {
   readonly author: ManyToOneReference<Book, Author, never> = hasOne(authorMeta, "author", "books");
 
   constructor(em: EntityManager, opts: BookOpts) {
-    super(em, bookMeta, {}, opts);
+    super(em, bookMeta, BookCodegen.defaultValues, opts);
     setOpts(this as any as Book, opts, { calledFromConstructor: true });
   }
 
   get id(): BookId | undefined {
+    return this.idTagged;
+  }
+
+  get idOrFail(): BookId {
+    return this.id || fail("Book has no id yet");
+  }
+
+  get idTagged(): BookId | undefined {
     return this.__orm.data["id"];
+  }
+
+  get idTaggedOrFail(): BookId {
+    return this.idTagged || fail("Book has no id tagged yet");
   }
 
   get title(): string {
@@ -119,11 +140,22 @@ export abstract class BookCodegen extends BaseEntity {
     return newChangesProxy(this as any as Book);
   }
 
-  async load<U, V>(fn: (lens: Lens<Book>) => Lens<U, V>): Promise<V> {
+  load<U, V>(fn: (lens: Lens<Book>) => Lens<U, V>): Promise<V> {
     return loadLens(this as any as Book, fn);
   }
 
-  async populate<H extends LoadHint<Book>>(hint: H): Promise<Loaded<Book, H>> {
-    return getEm(this).populate(this as any as Book, hint);
+  populate<H extends LoadHint<Book>>(hint: H): Promise<Loaded<Book, H>>;
+  populate<H extends LoadHint<Book>>(opts: { hint: H; forceReload?: boolean }): Promise<Loaded<Book, H>>;
+  populate<H extends LoadHint<Book>, V>(hint: H, fn: (b: Loaded<Book, H>) => V): Promise<V>;
+  populate<H extends LoadHint<Book>, V>(
+    opts: { hint: H; forceReload?: boolean },
+    fn: (b: Loaded<Book, H>) => V,
+  ): Promise<V>;
+  populate<H extends LoadHint<Book>, V>(hintOrOpts: any, fn?: (b: Loaded<Book, H>) => V): Promise<Loaded<Book, H> | V> {
+    return this.em.populate(this as any as Book, hintOrOpts, fn);
+  }
+
+  isLoaded<H extends LoadHint<Book>>(hint: H): this is Loaded<Book, H> {
+    return isLoaded(this as any as Book, hint);
   }
 }

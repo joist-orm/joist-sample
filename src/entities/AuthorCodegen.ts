@@ -6,8 +6,8 @@ import {
   ConfigApi,
   BaseEntity,
   EntityOrmField,
-  EntityManager,
   setOpts,
+  fail,
   PartialOrNull,
   OptsOf,
   Changes,
@@ -16,15 +16,21 @@ import {
   loadLens,
   LoadHint,
   Loaded,
-  getEm,
+  isLoaded,
   newRequiredRule,
   Collection,
   hasMany,
   setField,
 } from "joist-orm";
 import { Author, newAuthor, authorMeta, Book, BookId, bookMeta } from "./entities";
+import type { EntityManager } from "./entities";
 
 export type AuthorId = Flavor<string, "Author">;
+
+export interface AuthorFields {
+  firstName: string;
+  lastName: string | undefined;
+}
 
 export interface AuthorOpts {
   firstName: string;
@@ -66,12 +72,15 @@ authorConfig.addRule(newRequiredRule("firstName"));
 authorConfig.addRule(newRequiredRule("createdAt"));
 authorConfig.addRule(newRequiredRule("updatedAt"));
 
-export abstract class AuthorCodegen extends BaseEntity {
+export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
+  static defaultValues: object = {};
+
   readonly __orm!: EntityOrmField & {
     filterType: AuthorFilter;
     gqlFilterType: AuthorGraphQLFilter;
     orderType: AuthorOrder;
     optsType: AuthorOpts;
+    fieldsType: AuthorFields;
     optIdsType: AuthorIdsOpts;
     factoryOptsType: Parameters<typeof newAuthor>[1];
   };
@@ -79,12 +88,24 @@ export abstract class AuthorCodegen extends BaseEntity {
   readonly books: Collection<Author, Book> = hasMany(bookMeta, "books", "author", "author_id");
 
   constructor(em: EntityManager, opts: AuthorOpts) {
-    super(em, authorMeta, {}, opts);
+    super(em, authorMeta, AuthorCodegen.defaultValues, opts);
     setOpts(this as any as Author, opts, { calledFromConstructor: true });
   }
 
   get id(): AuthorId | undefined {
+    return this.idTagged;
+  }
+
+  get idOrFail(): AuthorId {
+    return this.id || fail("Author has no id yet");
+  }
+
+  get idTagged(): AuthorId | undefined {
     return this.__orm.data["id"];
+  }
+
+  get idTaggedOrFail(): AuthorId {
+    return this.idTagged || fail("Author has no id tagged yet");
   }
 
   get firstName(): string {
@@ -123,11 +144,25 @@ export abstract class AuthorCodegen extends BaseEntity {
     return newChangesProxy(this as any as Author);
   }
 
-  async load<U, V>(fn: (lens: Lens<Author>) => Lens<U, V>): Promise<V> {
+  load<U, V>(fn: (lens: Lens<Author>) => Lens<U, V>): Promise<V> {
     return loadLens(this as any as Author, fn);
   }
 
-  async populate<H extends LoadHint<Author>>(hint: H): Promise<Loaded<Author, H>> {
-    return getEm(this).populate(this as any as Author, hint);
+  populate<H extends LoadHint<Author>>(hint: H): Promise<Loaded<Author, H>>;
+  populate<H extends LoadHint<Author>>(opts: { hint: H; forceReload?: boolean }): Promise<Loaded<Author, H>>;
+  populate<H extends LoadHint<Author>, V>(hint: H, fn: (a: Loaded<Author, H>) => V): Promise<V>;
+  populate<H extends LoadHint<Author>, V>(
+    opts: { hint: H; forceReload?: boolean },
+    fn: (a: Loaded<Author, H>) => V,
+  ): Promise<V>;
+  populate<H extends LoadHint<Author>, V>(
+    hintOrOpts: any,
+    fn?: (a: Loaded<Author, H>) => V,
+  ): Promise<Loaded<Author, H> | V> {
+    return this.em.populate(this as any as Author, hintOrOpts, fn);
+  }
+
+  isLoaded<H extends LoadHint<Author>>(hint: H): this is Loaded<Author, H> {
+    return isLoaded(this as any as Author, hint);
   }
 }

@@ -10,7 +10,9 @@ There are no examples of business logic or Joist's various features; for those s
 ## Setup
 
 - `npm i`
+- `docker-compose up -d db`
 - `npm run joist-migrate`
+- `npm run joist-codegen` (if you've made migration/schema changes)
 - `npm test`
 
 ## Example Workflow
