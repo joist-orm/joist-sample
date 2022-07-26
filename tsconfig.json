@@ -1,3 +1,17 @@
 {
-  "extends": "@homebound/tsconfig/tsconfig.json"
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2018",
+    "declaration": true,
+    "moduleResolution": "Node",
+    "isolatedModules": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+      "src": ["src"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
