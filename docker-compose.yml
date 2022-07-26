@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: db.dockerfile
     ports:
-      - 5436:5432
+      - 5432:5432
     command:
       - "postgres"
       - "-c"
