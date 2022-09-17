@@ -29,3 +29,5 @@ RUN echo "#!/bin/bash" > /console.sh && \
   echo "set -e" >> /console.sh && \
   echo "psql -v ON_ERROR_STOP=1 --username \"${APP_USERNAME}\" --dbname \"${APP_DBNAME}\"" >> /console.sh && \
   chmod u+x /console.sh
+
+CMD ["postgres", "-c", "fsync=off"]
