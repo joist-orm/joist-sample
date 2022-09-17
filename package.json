@@ -20,10 +20,9 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "joist-codegen": "^1.21.0",
-    "joist-migration-utils": "^1.21.0",
-    "joist-orm": "^1.21.0",
-    "ts-node": "^10.8.1"
+    "joist-codegen": "^1.30.1",
+    "joist-migration-utils": "^1.30.1",
+    "joist-orm": "^1.30.1"
   },
   "devDependencies": {
     "@homebound/tsconfig": "^1.0.3",
@@ -31,6 +30,7 @@
     "jest": "^28.1.1",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.5",
+    "tsx": "^3.9.0",
     "typescript": "^4.7.4"
   }
 }
