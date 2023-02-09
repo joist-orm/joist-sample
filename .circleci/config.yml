@@ -32,10 +32,6 @@ jobs:
           name: Run Tests
           command: |
             docker-compose build
-
-            # TODO: make this better - the init script is causing some wonkiness here.
-            docker-compose up db-wait
-            sleep 10 # hack to wait for the DB
             docker-compose up db-wait
 
             yarn joist-migrate
