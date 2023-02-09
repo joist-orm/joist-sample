@@ -9,26 +9,26 @@ There are no examples of business logic or Joist's various features; for those s
 
 ## Setup
 
-- `npm i`
+- `yarn`
 - `docker-compose up -d db`
-- `npm run joist-migrate`
-- `npm run joist-codegen` (if you've made migration/schema changes)
-- `npm test`
+- `yarn joist-migrate`
+- `yarn joist-codegen` (if you've made migration/schema changes)
+- `yarn test`
 
 ## Example Workflow
 
 A typical workflow for adding a new entity looks like:
 
-- Run `npm run joist-new-migration "add publisher"`
+- Run `yarn joist-new-migration "add publisher"`
 - Edit the `migrations/...add-publisher.ts` file and add
   ```typescript
   createEntityTable(pgm, "publishers", {
     name: { type: "text", notNull: true },
   });
   ```
-- Run `npm run joist-migrate`
+- Run `yarn joist-migrate`
   - If you change your migration, and want to re-apply it from scratch, run `docker-compose exec db ./reset.sh`
-- Run `npm run joist-codegen`
+- Run `yarn joist-codegen`
 - Copy/paste the `Author.test.ts` and write a test for `Publisher`
 
 ## Steps Taken to Setup This Repo
