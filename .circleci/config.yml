@@ -5,7 +5,7 @@ orbs:
 
 workflows:
   version: 2
-  test:
+  test-nightly:
     jobs:
       - test
     triggers:
@@ -15,6 +15,9 @@ workflows:
             branches:
               only:
                 - main
+  test:
+    jobs:
+      - test
 
 jobs:
   test:
