@@ -31,6 +31,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
+            docker-compose build
             docker-compose up db-wait
             yarn joist-migrate
             yarn test
