@@ -1,0 +1,38 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+
+workflows:
+  version: 2
+  test-nightly:
+    jobs:
+      - test
+    triggers:
+      - schedule:
+          cron: "0 0 * * *" # nightly @ 12am UTC - https://crontab.guru/#0_0_*_*_*
+          filters:
+            branches:
+              only:
+                - main
+  test:
+    jobs:
+      - test
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:18.14.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Run Tests
+          command: |
+            docker-compose build
+            docker-compose up db-wait
+
+            yarn joist-migrate
+            yarn test
