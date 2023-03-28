@@ -32,8 +32,10 @@ import type { EntityManager } from "./entities";
 export type BookId = Flavor<string, "Book">;
 
 export interface BookFields {
-  title: string;
-  author: Author;
+  title: { kind: "primitive"; type: string; unique: false; nullable: never };
+  createdAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
+  updatedAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
+  author: { kind: "m2o"; type: Author; nullable: never };
 }
 
 export interface BookOpts {
@@ -140,8 +142,8 @@ export abstract class BookCodegen extends BaseEntity<EntityManager> {
     return newChangesProxy(this) as any;
   }
 
-  load<U, V>(fn: (lens: Lens<Book>) => Lens<U, V>): Promise<V> {
-    return loadLens(this as any as Book, fn);
+  load<U, V>(fn: (lens: Lens<Book>) => Lens<U, V>, opts: { sql?: boolean } = {}): Promise<V> {
+    return loadLens(this as any as Book, fn, opts);
   }
 
   populate<H extends LoadHint<Book>>(hint: H): Promise<Loaded<Book, H>>;

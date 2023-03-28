@@ -2968,51 +2968,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joist-codegen@npm:^1.50.1":
-  version: 1.50.1
-  resolution: "joist-codegen@npm:1.50.1"
+"joist-codegen@npm:^1.67.0":
+  version: 1.67.0
+  resolution: "joist-codegen@npm:1.67.0"
   dependencies:
     "@dprint/formatter": ^0.2.0
     "@dprint/json": ^0.15.6
     "@types/pluralize": 0.0.29
     change-case: ^4.1.2
     is-plain-object: ^5.0.0
-    joist-utils: 1.50.1
+    joist-utils: 1.67.0
     knex: ^2.3.0
     pg: ^8.8.0
     pg-structure: ^7.13.1
     pluralize: ^8.0.0
     ts-poet: ^6.3.0
-  checksum: 1e7ebdc4e3818194003ecc0047f007b0d48115ac95ee052c615bdfa9d003665c09a53c3a195c2503aacfe3e4bfc4897cc46a16130c3d2a7a34784c0d05def358
+  checksum: bd002dd429cf9b024a6c2e778c0a35ebdc2bcedb38ed0bca26b74268b661315ffa8f98d7081761206158815e7f5685d638dc7bd0e7ea747932a556f778bd6e2e
   languageName: node
   linkType: hard
 
-"joist-migration-utils@npm:^1.50.1":
-  version: 1.50.1
-  resolution: "joist-migration-utils@npm:1.50.1"
+"joist-migration-utils@npm:^1.67.0":
+  version: 1.67.0
+  resolution: "joist-migration-utils@npm:1.67.0"
   dependencies:
     "@types/pluralize": 0.0.29
-    joist-utils: 1.50.1
+    joist-utils: 1.67.0
     node-pg-migrate: ^6.2.2
     pg: ^8.8.0
     pg-structure: ^7.13.1
     pluralize: ^8.0.0
-  checksum: dbadaf41cd2f1d6014a6e1c8bad3006abef52efd47e0413e9a0ad0b436235a444cf4509e98194fcffde8e49e295550073c3112ef52ff2641eb8091e966fc1138
+  checksum: ab2a8272588440874bf3453025ed2d0300900ee582524a72066341907d987e251ba87120f835c2deea1a71e369990933f02af74ddbf9baaea3b491416e235c18
   languageName: node
   linkType: hard
 
-"joist-orm@npm:^1.50.1":
-  version: 1.50.1
-  resolution: "joist-orm@npm:1.50.1"
+"joist-orm@npm:^1.67.0":
+  version: 1.67.0
+  resolution: "joist-orm@npm:1.67.0"
   dependencies:
     "@types/object-hash": ^2.2.1
     dataloader: ^2.1.0
     is-plain-object: ^5.0.0
-    joist-utils: 1.50.1
+    joist-utils: 1.67.0
     knex: ^2.3.0
     object-hash: ^3.0.0
     pg: ^8.8.0
-  checksum: e882f1e23f702a6bb70910237ae7e1878c8e7431b20159297381957a12ad2c0a6f30bc5c5f405f1052504dad991599304817fbc1028b3dafb4f515cad12aa717
+  checksum: 515ec2c2ba8ed062c88e1dba26997133b497487384776d4e67793e2ce9c821650dafa1557ec1a3191f360cf2d22d4c4b1b169c6367ec02f0754f340436948459
   languageName: node
   linkType: hard
 
@@ -3024,9 +3024,9 @@ __metadata:
     "@types/jest": ^29.4.0
     dotenv: ^16.0.3
     jest: ^29.4.2
-    joist-codegen: ^1.50.1
-    joist-migration-utils: ^1.50.1
-    joist-orm: ^1.50.1
+    joist-codegen: ^1.67.0
+    joist-migration-utils: ^1.67.0
+    joist-orm: ^1.67.0
     prettier: ^2.8.4
     ts-jest: ^29.0.5
     tsx: ^3.12.3
@@ -3034,13 +3034,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"joist-utils@npm:1.50.1":
-  version: 1.50.1
-  resolution: "joist-utils@npm:1.50.1"
+"joist-utils@npm:1.67.0":
+  version: 1.67.0
+  resolution: "joist-utils@npm:1.67.0"
   dependencies:
     pg: ^8.8.0
     pg-connection-string: ^2.5.0
-  checksum: d19d6f3c6992f86775f062d033bfc43e322f5eae0e988e551d5abb7191409131a541abbda67bc104b095bdb7d1f46ffa6ebb11fe7a079edec4a7ecce9cecd70e
+  checksum: d78f3493d2a48e957327a0dbd27d7c33ac89568f6ab60e36622264e9695055fef8a6e53b2633b250dc83b02c93adeb620a48f59bc9d9704da0326ee556414095
   languageName: node
   linkType: hard
 

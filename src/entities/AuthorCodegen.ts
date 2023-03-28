@@ -3,8 +3,11 @@ import {
   Changes,
   Collection,
   ConfigApi,
+  EntityFilter,
+  EntityGraphQLFilter,
   EntityOrmField,
   fail,
+  FilterOf,
   Flavor,
   hasMany,
   isLoaded,
@@ -28,8 +31,10 @@ import type { EntityManager } from "./entities";
 export type AuthorId = Flavor<string, "Author">;
 
 export interface AuthorFields {
-  firstName: string;
-  lastName: string | undefined;
+  firstName: { kind: "primitive"; type: string; unique: false; nullable: never };
+  lastName: { kind: "primitive"; type: string; unique: false; nullable: undefined };
+  createdAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
+  updatedAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
 }
 
 export interface AuthorOpts {
@@ -45,9 +50,10 @@ export interface AuthorIdsOpts {
 export interface AuthorFilter {
   id?: ValueFilter<AuthorId, never>;
   firstName?: ValueFilter<string, never>;
-  lastName?: ValueFilter<string, null | undefined>;
+  lastName?: ValueFilter<string, null>;
   createdAt?: ValueFilter<Date, never>;
   updatedAt?: ValueFilter<Date, never>;
+  books?: EntityFilter<Book, BookId, FilterOf<Book>, null | undefined>;
 }
 
 export interface AuthorGraphQLFilter {
@@ -56,6 +62,7 @@ export interface AuthorGraphQLFilter {
   lastName?: ValueGraphQLFilter<string>;
   createdAt?: ValueGraphQLFilter<Date>;
   updatedAt?: ValueGraphQLFilter<Date>;
+  books?: EntityGraphQLFilter<Book, BookId, FilterOf<Book>, null | undefined>;
 }
 
 export interface AuthorOrder {
@@ -144,8 +151,8 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
     return newChangesProxy(this) as any;
   }
 
-  load<U, V>(fn: (lens: Lens<Author>) => Lens<U, V>): Promise<V> {
-    return loadLens(this as any as Author, fn);
+  load<U, V>(fn: (lens: Lens<Author>) => Lens<U, V>, opts: { sql?: boolean } = {}): Promise<V> {
+    return loadLens(this as any as Author, fn, opts);
   }
 
   populate<H extends LoadHint<Author>>(hint: H): Promise<Loaded<Author, H>>;
