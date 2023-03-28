@@ -10,7 +10,7 @@ There are no examples of business logic or Joist's various features; for those s
 ## Setup
 
 - `yarn`
-- `docker-compose up -d db`
+- `docker-compose up -d db --wait`
 - `yarn joist-migrate`
 - `yarn joist-codegen` (if you've made migration/schema changes)
 - `yarn test`
