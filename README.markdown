@@ -57,6 +57,6 @@ TODO: Automate this with more, probably with mrm.
 - Add `joist-migrate` script, run it
 - Add `joist-codegen` script, run it
 - Add `Author.test.ts`
-- Add `dotenv` to `package.json`
+- Add `env-cmd` to `package.json`
 - Add `joist-new-migration` to `package.json`
 - Add `.gitattributes` to suppress diffs on generated files
