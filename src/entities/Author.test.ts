@@ -1,4 +1,4 @@
-import { Author, EntityManager, newAuthor } from "src/entities";
+import { Author, newAuthor } from "src/entities";
 import { newEntityManager } from "src/setupTests";
 
 describe("Author", () => {
