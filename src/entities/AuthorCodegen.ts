@@ -1,14 +1,17 @@
 import {
   BaseEntity,
   Changes,
+  cleanStringValue,
   Collection,
   ConfigApi,
   EntityFilter,
   EntityGraphQLFilter,
+  EntityMetadata,
   EntityOrmField,
   fail,
   FilterOf,
   Flavor,
+  GraphQLFilterOf,
   hasMany,
   isLoaded,
   Lens,
@@ -28,9 +31,10 @@ import {
 import { Author, authorMeta, Book, BookId, bookMeta, newAuthor } from "./entities";
 import type { EntityManager } from "./entities";
 
-export type AuthorId = Flavor<string, "Author">;
+export type AuthorId = Flavor<string, Author>;
 
 export interface AuthorFields {
+  id: { kind: "primitive"; type: number; unique: true; nullable: false };
   firstName: { kind: "primitive"; type: string; unique: false; nullable: never };
   lastName: { kind: "primitive"; type: string; unique: false; nullable: undefined };
   createdAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
@@ -62,7 +66,7 @@ export interface AuthorGraphQLFilter {
   lastName?: ValueGraphQLFilter<string>;
   createdAt?: ValueGraphQLFilter<Date>;
   updatedAt?: ValueGraphQLFilter<Date>;
-  books?: EntityGraphQLFilter<Book, BookId, FilterOf<Book>, null | undefined>;
+  books?: EntityGraphQLFilter<Book, BookId, GraphQLFilterOf<Book>, null | undefined>;
 }
 
 export interface AuthorOrder {
@@ -81,6 +85,8 @@ authorConfig.addRule(newRequiredRule("updatedAt"));
 
 export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
   static defaultValues: object = {};
+  static readonly tagName = "a";
+  static readonly metadata: EntityMetadata<Author>;
 
   declare readonly __orm: EntityOrmField & {
     filterType: AuthorFilter;
@@ -92,7 +98,7 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
     factoryOptsType: Parameters<typeof newAuthor>[1];
   };
 
-  readonly books: Collection<Author, Book> = hasMany(bookMeta, "books", "author", "author_id");
+  readonly books: Collection<Author, Book> = hasMany(bookMeta, "books", "author", "author_id", undefined);
 
   constructor(em: EntityManager, opts: AuthorOpts) {
     super(em, authorMeta, AuthorCodegen.defaultValues, opts);
@@ -120,7 +126,7 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
   }
 
   set firstName(firstName: string) {
-    setField(this, "firstName", firstName);
+    setField(this, "firstName", cleanStringValue(firstName));
   }
 
   get lastName(): string | undefined {
@@ -128,7 +134,7 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
   }
 
   set lastName(lastName: string | undefined) {
-    setField(this, "lastName", lastName);
+    setField(this, "lastName", cleanStringValue(lastName));
   }
 
   get createdAt(): Date {
