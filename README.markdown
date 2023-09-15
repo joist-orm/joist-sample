@@ -10,16 +10,14 @@ There are no examples of business logic or Joist's various features; for those s
 ## Setup
 
 - `yarn`
-- `docker-compose up -d db --wait`
-- `yarn joist-migrate`
-- `yarn joist-codegen` (if you've made migration/schema changes)
+- `yarn db`
 - `yarn test`
 
 ## Example Workflow
 
 A typical workflow for adding a new entity looks like:
 
-- Run `yarn joist-new-migration "add publisher"`
+- Run `yarn pg-new-migration "add publisher"`
 - Edit the `migrations/...add-publisher.ts` file and add
   ```typescript
   createEntityTable(pgm, "publishers", {
@@ -58,5 +56,5 @@ TODO: Automate this with more, probably with mrm.
 - Add `joist-codegen` script, run it
 - Add `Author.test.ts`
 - Add `env-cmd` to `package.json`
-- Add `joist-new-migration` to `package.json`
+- Add `pg-migration` to `package.json`
 - Add `.gitattributes` to suppress diffs on generated files

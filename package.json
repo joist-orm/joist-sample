@@ -1,10 +1,13 @@
 {
   "name": "joist-ts-sample",
   "scripts": {
+    "codegen": "yarn joist-codegen",
+    "db": "docker compose up --wait db && yarn pg-migrate && yarn codegen",
+    "db-reset": "docker compose exec db ./reset.sh && yarn pg-migrate && yarn codegen",
     "test": "jest",
-    "joist-migrate": "env-cmd tsx ./node_modules/joist-migration-utils",
+    "pg-migrate": "env-cmd tsx ./node_modules/joist-migration-utils",
+    "pg-new-migration": "npx node-pg-migrate create",
     "joist-codegen": "env-cmd tsx ./node_modules/joist-codegen",
-    "joist-new-migration": "npx node-pg-migrate create",
     "format": "prettier --write 'src/**/*.{ts,js,tsx,jsx}'",
     "build": "tsc"
   },
