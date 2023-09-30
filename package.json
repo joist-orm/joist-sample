@@ -22,18 +22,18 @@
     "printWidth": 120
   },
   "dependencies": {
-    "joist-codegen": "^1.104.2",
-    "joist-migration-utils": "^1.104.2",
-    "joist-orm": "^1.104.2"
+    "joist-codegen": "^1.108.10",
+    "joist-migration-utils": "^1.108.10",
+    "joist-orm": "^1.108.10"
   },
   "devDependencies": {
-    "@homebound/tsconfig": "^1.1.0",
+    "@homebound/tsconfig": "^1.1.1",
     "@types/jest": "^29.5.4",
     "env-cmd": "^10.1.0",
     "jest": "^29.7.0",
     "prettier": "^2.8.8",
     "ts-jest": "^29.1.1",
-    "tsx": "^3.12.10",
+    "tsx": "^3.13.0",
     "typescript": "^5.2.2"
   },
   "packageManager": "yarn@3.5.0"

@@ -422,36 +422,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild-kit/cjs-loader@npm:^2.4.2":
-  version: 2.4.2
-  resolution: "@esbuild-kit/cjs-loader@npm:2.4.2"
-  dependencies:
-    "@esbuild-kit/core-utils": ^3.0.0
-    get-tsconfig: ^4.4.0
-  checksum: e346e339bfc7eff5c52c270fd0ec06a7f2341b624adfb69f84b7d83f119c35070420906f2761a0b4604e0a0ec90e35eaf12544585476c428ed6d6ee3b250c0fe
-  languageName: node
-  linkType: hard
-
-"@esbuild-kit/core-utils@npm:^3.0.0, @esbuild-kit/core-utils@npm:^3.3.0":
-  version: 3.3.1
-  resolution: "@esbuild-kit/core-utils@npm:3.3.1"
-  dependencies:
-    esbuild: ~0.18.20
-    source-map-support: ^0.5.21
-  checksum: a176d226af59cdd4e034d6dd8c264d75a0056b9b47e4ccd5035684e348d25ad6bf345f87ce84f4a972dd318900c060806dc4d0bfeaf700f70f65d235dd93b610
-  languageName: node
-  linkType: hard
-
-"@esbuild-kit/esm-loader@npm:^2.6.3":
-  version: 2.6.4
-  resolution: "@esbuild-kit/esm-loader@npm:2.6.4"
-  dependencies:
-    "@esbuild-kit/core-utils": ^3.3.0
-    get-tsconfig: ^4.7.0
-  checksum: 0f522f2eee04485a3a97317c7dc72f4fc42e1eb3c7c1933d4c062ecdf9b454f8652a43949a8246dc4d85df61ff66daf08f4cfc4a98ff529fc500d06691a0c475
-  languageName: node
-  linkType: hard
-
 "@esbuild/android-arm64@npm:0.18.20":
   version: 0.18.20
   resolution: "@esbuild/android-arm64@npm:0.18.20"
@@ -613,12 +583,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@homebound/tsconfig@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@homebound/tsconfig@npm:1.1.0"
+"@homebound/tsconfig@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@homebound/tsconfig@npm:1.1.1"
   dependencies:
     "@tsconfig/recommended": ^1.0.1
-  checksum: 52638b111e7d18c33bfdd2639a112db41b1bb8c7cd4b15fe99a501f2ad35e4d3a74b91ab4191274e613eced58fa7e022ac112147c137ebe7117fbf0174b7603c
+  checksum: 2094f178c6116f4729c5980b633858f1150d5ca54d9dc25a1179d4f35ee4904b8e9bc19d7f8b4f14cbcf2c528aa68b1b3f0cbfabd535116e568b84f714d77e58
   languageName: node
   linkType: hard
 
@@ -2093,7 +2063,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:^2.3.2, fsevents@npm:~2.3.2":
+"fsevents@npm:^2.3.2":
   version: 2.3.2
   resolution: "fsevents@npm:2.3.2"
   dependencies:
@@ -2103,9 +2073,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
+"fsevents@npm:~2.3.3":
+  version: 2.3.3
+  resolution: "fsevents@npm:2.3.3"
+  dependencies:
+    node-gyp: latest
+  checksum: 11e6ea6fea15e42461fc55b4b0e4a0a3c654faa567f1877dbd353f39156f69def97a69936d1746619d656c4b93de2238bf731f6085a03a50cabf287c9d024317
+  conditions: os=darwin
+  languageName: node
+  linkType: hard
+
+"fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
   resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
+  dependencies:
+    node-gyp: latest
+  conditions: os=darwin
+  languageName: node
+  linkType: hard
+
+"fsevents@patch:fsevents@~2.3.3#~builtin<compat/fsevents>":
+  version: 2.3.3
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -2163,12 +2152,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-tsconfig@npm:^4.4.0, get-tsconfig@npm:^4.7.0":
-  version: 4.7.0
-  resolution: "get-tsconfig@npm:4.7.0"
+"get-tsconfig@npm:^4.7.2":
+  version: 4.7.2
+  resolution: "get-tsconfig@npm:4.7.2"
   dependencies:
     resolve-pkg-maps: ^1.0.0
-  checksum: 44536925720acc2f133d26301d5626405d8fe33066625484ff309bb6fb7f3310dc0bb202f862805f21a791e38a9870c6dddb013d1443dd5d745d91ad1946254a
+  checksum: 172358903250eff0103943f816e8a4e51d29b8e5449058bdf7266714a908a48239f6884308bd3a6ff28b09f692b9533dbebfd183ab63e4e14f073cda91f1bca9
   languageName: node
   linkType: hard
 
@@ -2971,51 +2960,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joist-codegen@npm:^1.104.2":
-  version: 1.104.2
-  resolution: "joist-codegen@npm:1.104.2"
+"joist-codegen@npm:^1.108.10":
+  version: 1.108.10
+  resolution: "joist-codegen@npm:1.108.10"
   dependencies:
     "@dprint/formatter": ^0.2.0
     "@dprint/json": 0.15.6
     "@types/pluralize": 0.0.30
     change-case: ^4.1.2
     is-plain-object: ^5.0.0
-    joist-utils: 1.104.2
+    joist-utils: 1.108.10
     knex: ^2.5.1
     pg: ^8.11.3
     pg-structure: ^7.15.0
     pluralize: ^8.0.0
     ts-poet: ^6.6.0
-  checksum: 2f032423470cbd5a43068ed9676ed60a3f2e2595bef6f8d429eabaed9819384777466f56590c49d9e9150f17a5e6baf36c443d0752594fb0e53edeb70d747d5c
+  checksum: 95e8f78f9f9d5a6832b4d6a800ed72b2cf343f2b501a618468b94f44502f839637376e603a884ca1b5f797eea5936e43f85d23d4e49d47dbbd1b3244fad26395
   languageName: node
   linkType: hard
 
-"joist-migration-utils@npm:^1.104.2":
-  version: 1.104.2
-  resolution: "joist-migration-utils@npm:1.104.2"
+"joist-migration-utils@npm:^1.108.10":
+  version: 1.108.10
+  resolution: "joist-migration-utils@npm:1.108.10"
   dependencies:
     "@types/pluralize": 0.0.30
-    joist-utils: 1.104.2
+    joist-utils: 1.108.10
     node-pg-migrate: ^6.2.2
     pg: ^8.11.3
     pg-structure: ^7.15.0
     pluralize: ^8.0.0
-  checksum: 6a3a68a74ea436e6bcb3167b72c615d3db2a62803427eea6df5da4c6d910b20029d86a8d9db150459e963f481e63372d44685b98d16f2d7088593cf26cfe9177
+  checksum: 2590f5d2efe4f0892617c4406da8d83d9dfe40b772cabd3d700a1e97ec555777459ebe7f76d7a6332cabf02160b3f2222a0b39e62913e778e022a659ea486c2e
   languageName: node
   linkType: hard
 
-"joist-orm@npm:^1.104.2":
-  version: 1.104.2
-  resolution: "joist-orm@npm:1.104.2"
+"joist-orm@npm:^1.108.10":
+  version: 1.108.10
+  resolution: "joist-orm@npm:1.108.10"
   dependencies:
     "@types/object-hash": ^3.0.3
     dataloader: ^2.2.2
     is-plain-object: ^5.0.0
-    joist-utils: 1.104.2
+    joist-utils: 1.108.10
     knex: ^2.5.1
     object-hash: ^3.0.0
     pg: ^8.11.3
-  checksum: dd9eda1e898bdfba4ca7a28d94bfc7f458347b38bed51625f99bda929856c1ae819bc48a75155a40e43e5bbf044d2d487fc8c2ccb49b94d0ce54f8ee9b4ccc80
+  checksum: f86648790a1a7563bfae59a5bdc6952fb698e90d083ddd3634162fbd70665483e7234c31051145eaa596fba7c64be448fb273068b9cd56d5ff482c6a0822da60
   languageName: node
   linkType: hard
 
@@ -3023,27 +3012,27 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "joist-ts-sample@workspace:."
   dependencies:
-    "@homebound/tsconfig": ^1.1.0
+    "@homebound/tsconfig": ^1.1.1
     "@types/jest": ^29.5.4
     env-cmd: ^10.1.0
     jest: ^29.7.0
-    joist-codegen: ^1.104.2
-    joist-migration-utils: ^1.104.2
-    joist-orm: ^1.104.2
+    joist-codegen: ^1.108.10
+    joist-migration-utils: ^1.108.10
+    joist-orm: ^1.108.10
     prettier: ^2.8.8
     ts-jest: ^29.1.1
-    tsx: ^3.12.10
+    tsx: ^3.13.0
     typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
-"joist-utils@npm:1.104.2":
-  version: 1.104.2
-  resolution: "joist-utils@npm:1.104.2"
+"joist-utils@npm:1.108.10":
+  version: 1.108.10
+  resolution: "joist-utils@npm:1.108.10"
   dependencies:
     pg: ^8.11.3
     pg-connection-string: ^2.6.2
-  checksum: f06ce46e262b2ad1cf0e0ee6f3b7bef243f352ace0fff6d5afb59ec45d6dfc70048b1426f7dbb8a61efa8af60bc0e8acfa66490a367dccbef487894040084af5
+  checksum: 7963848265c08f25cb844b177157a314842e24c050df5bc459c0033bde3b08e38ea56fbb6f652b82ec9a2656072b8ced1a7244ace054c774a99a7d6a6fedca91
   languageName: node
   linkType: hard
 
@@ -4403,20 +4392,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:^3.12.10":
-  version: 3.12.10
-  resolution: "tsx@npm:3.12.10"
+"tsx@npm:^3.13.0":
+  version: 3.13.0
+  resolution: "tsx@npm:3.13.0"
   dependencies:
-    "@esbuild-kit/cjs-loader": ^2.4.2
-    "@esbuild-kit/core-utils": ^3.3.0
-    "@esbuild-kit/esm-loader": ^2.6.3
-    fsevents: ~2.3.2
+    esbuild: ~0.18.20
+    fsevents: ~2.3.3
+    get-tsconfig: ^4.7.2
+    source-map-support: ^0.5.21
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
-    tsx: dist/cli.js
-  checksum: 84fbbdbb90a05ecc764aee92fbe234b45939ccba34a08298fcec2bb9cb2ecb7676b21e676dd12681279490a7ac55bb81897ce503775cbcce0f76703eb282bb37
+    tsx: dist/cli.mjs
+  checksum: ef858574e110d16a7ca9bbb3a5edeeafd37026ebed6cdd390c4707ad64005024c55fd3142a8f89732c79176196afa7d27073f586966ff0cae0126159ebd58be4
   languageName: node
   linkType: hard
 
