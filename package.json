@@ -3,7 +3,7 @@
   "scripts": {
     "codegen": "yarn joist-codegen",
     "db": "docker compose up --wait db && yarn pg-migrate && yarn codegen",
-    "db-reset": "docker compose exec db ./reset.sh && yarn pg-migrate && yarn codegen",
+    "redb": "docker compose exec db ./reset.sh && yarn pg-migrate && yarn codegen",
     "test": "jest",
     "pg-migrate": "env-cmd tsx ./node_modules/joist-migration-utils",
     "pg-new-migration": "npx node-pg-migrate create",
