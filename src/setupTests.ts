@@ -2,16 +2,24 @@ import { EntityManager } from "src/entities";
 import { knex as createKnex, Knex } from "knex";
 import { PostgresDriver } from "joist-orm";
 import { newPgConnectionConfig } from "joist-utils";
+import { beforeEach, afterAll } from "@jest/globals";
 
 let knex: Knex;
+export let queries: string[] = [];
 
 function getKnex(): Knex {
-  return (knex ??= createKnex({
-    client: "pg",
-    connection: newPgConnectionConfig() as any,
-    debug: false,
-    asyncStackTraces: true,
-  }));
+  if (!knex) {
+    knex = createKnex({
+      client: "pg",
+      connection: newPgConnectionConfig() as any,
+      debug: false,
+      asyncStackTraces: true,
+    });
+    knex.on("query", (e: any) => {
+      queries.push(e.sql);
+    });
+  }
+  return knex;
 }
 
 export function newEntityManager(): EntityManager {
@@ -19,8 +27,9 @@ export function newEntityManager(): EntityManager {
 }
 
 beforeEach(async () => {
-  const knex = await getKnex();
+  const knex = getKnex();
   await knex.select(knex.raw("flush_database()"));
+  queries = [];
 });
 
 afterAll(async () => {
