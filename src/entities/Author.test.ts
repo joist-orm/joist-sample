@@ -1,5 +1,6 @@
 import { Author, newAuthor } from "src/entities";
 import { newEntityManager } from "src/setupTests";
+import { describe, expect, it } from "@jest/globals";
 
 describe("Author", () => {
   it("can be created", async () => {
