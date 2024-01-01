@@ -4,7 +4,7 @@ import { describe, expect, it } from "@jest/globals";
 
 describe("Author", () => {
   it("can be created", async () => {
-    const em = newEntityManager();
+    const em = newEntityManager(); // 1 per HTTP request
     const a1 = em.create(Author, { firstName: "a1" });
     const a2 = em.create(Author, { firstName: "a2" });
     em.create(Book, { author: a1, title: "b1" });
