@@ -7,9 +7,11 @@ import {
   EntityGraphQLFilter,
   EntityMetadata,
   EntityOrmField,
-  fail,
+  failNoIdYet,
   FilterOf,
   Flavor,
+  getField,
+  getOrmField,
   GraphQLFilterOf,
   hasOne,
   isLoaded,
@@ -25,20 +27,21 @@ import {
   PartialOrNull,
   setField,
   setOpts,
+  TaggedId,
+  toIdOf,
   ValueFilter,
   ValueGraphQLFilter,
 } from "joist-orm";
-import { Author, AuthorId, authorMeta, AuthorOrder, Book, bookMeta, newBook } from "./entities";
-import type { EntityManager } from "./entities";
+import { Author, AuthorId, authorMeta, AuthorOrder, Book, bookMeta, Entity, EntityManager, newBook } from "./entities";
 
 export type BookId = Flavor<string, Book>;
 
 export interface BookFields {
-  id: { kind: "primitive"; type: number; unique: true; nullable: false };
-  title: { kind: "primitive"; type: string; unique: false; nullable: never };
-  createdAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
-  updatedAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
-  author: { kind: "m2o"; type: Author; nullable: never };
+  id: { kind: "primitive"; type: number; unique: true; nullable: never };
+  title: { kind: "primitive"; type: string; unique: false; nullable: never; derived: false };
+  createdAt: { kind: "primitive"; type: Date; unique: false; nullable: never; derived: true };
+  updatedAt: { kind: "primitive"; type: Date; unique: false; nullable: never; derived: true };
+  author: { kind: "m2o"; type: Author; nullable: never; derived: false };
 }
 
 export interface BookOpts {
@@ -51,7 +54,7 @@ export interface BookIdsOpts {
 }
 
 export interface BookFilter {
-  id?: ValueFilter<BookId, never>;
+  id?: ValueFilter<BookId, never> | null;
   title?: ValueFilter<string, never>;
   createdAt?: ValueFilter<Date, never>;
   updatedAt?: ValueFilter<Date, never>;
@@ -81,7 +84,7 @@ bookConfig.addRule(newRequiredRule("createdAt"));
 bookConfig.addRule(newRequiredRule("updatedAt"));
 bookConfig.addRule(newRequiredRule("author"));
 
-export abstract class BookCodegen extends BaseEntity<EntityManager> {
+export abstract class BookCodegen extends BaseEntity<EntityManager, string> implements Entity {
   static defaultValues: object = {};
   static readonly tagName = "b";
   static readonly metadata: EntityMetadata<Book>;
@@ -96,31 +99,29 @@ export abstract class BookCodegen extends BaseEntity<EntityManager> {
     factoryOptsType: Parameters<typeof newBook>[1];
   };
 
-  readonly author: ManyToOneReference<Book, Author, never> = hasOne(authorMeta, "author", "books");
-
   constructor(em: EntityManager, opts: BookOpts) {
     super(em, bookMeta, BookCodegen.defaultValues, opts);
     setOpts(this as any as Book, opts, { calledFromConstructor: true });
   }
 
   get id(): BookId {
-    return this.idMaybe || fail("Book has no id yet");
+    return this.idMaybe || failNoIdYet("Book");
   }
 
   get idMaybe(): BookId | undefined {
-    return this.idTaggedMaybe;
+    return toIdOf(bookMeta, this.idTaggedMaybe);
   }
 
-  get idTagged(): BookId {
-    return this.idTaggedMaybe || fail("Book has no id tagged yet");
+  get idTagged(): TaggedId {
+    return this.idTaggedMaybe || failNoIdYet("Book");
   }
 
-  get idTaggedMaybe(): BookId | undefined {
-    return this.__orm.data["id"];
+  get idTaggedMaybe(): TaggedId | undefined {
+    return getField(this, "id");
   }
 
   get title(): string {
-    return this.__orm.data["title"];
+    return getField(this, "title");
   }
 
   set title(title: string) {
@@ -128,11 +129,11 @@ export abstract class BookCodegen extends BaseEntity<EntityManager> {
   }
 
   get createdAt(): Date {
-    return this.__orm.data["createdAt"];
+    return getField(this, "createdAt");
   }
 
   get updatedAt(): Date {
-    return this.__orm.data["updatedAt"];
+    return getField(this, "updatedAt");
   }
 
   set(opts: Partial<BookOpts>): void {
@@ -164,5 +165,10 @@ export abstract class BookCodegen extends BaseEntity<EntityManager> {
 
   isLoaded<H extends LoadHint<Book>>(hint: H): this is Loaded<Book, H> {
     return isLoaded(this as any as Book, hint);
+  }
+
+  get author(): ManyToOneReference<Book, Author, never> {
+    const { relations } = getOrmField(this);
+    return relations.author ??= hasOne(this as any as Book, authorMeta, "author", "books");
   }
 }

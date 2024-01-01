@@ -1,18 +1,19 @@
-import { BaseEntity, configureMetadata, EntityManager as EntityManager1, EntityMetadata, KeySerde, PrimitiveSerde } from "joist-orm";
+import { configureMetadata, Entity as Entity2, EntityManager as EntityManager1, EntityMetadata, KeySerde, PrimitiveSerde } from "joist-orm";
 import { Author, authorConfig, Book, bookConfig, newAuthor, newBook } from "./entities";
 
-export class EntityManager extends EntityManager1<{}> {}
+export class EntityManager extends EntityManager1<{}, Entity> {}
 
-export function getEm(e: BaseEntity): EntityManager {
-  return e.em as EntityManager;
+export interface Entity extends Entity2 {
+  id: string;
+  em: EntityManager;
 }
 
 export const authorMeta: EntityMetadata<Author> = {
   cstr: Author,
   type: "Author",
   baseType: undefined,
-  idType: "int",
-  idTagged: true,
+  idType: "tagged-string",
+  idDbType: "int",
   tagName: "a",
   tableName: "authors",
   fields: {
@@ -38,8 +39,8 @@ export const bookMeta: EntityMetadata<Book> = {
   cstr: Book,
   type: "Book",
   baseType: undefined,
-  idType: "int",
-  idTagged: true,
+  idType: "tagged-string",
+  idDbType: "int",
   tagName: "b",
   tableName: "books",
   fields: {

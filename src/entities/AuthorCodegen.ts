@@ -8,9 +8,11 @@ import {
   EntityGraphQLFilter,
   EntityMetadata,
   EntityOrmField,
-  fail,
+  failNoIdYet,
   FilterOf,
   Flavor,
+  getField,
+  getOrmField,
   GraphQLFilterOf,
   hasMany,
   isLoaded,
@@ -25,20 +27,21 @@ import {
   PartialOrNull,
   setField,
   setOpts,
+  TaggedId,
+  toIdOf,
   ValueFilter,
   ValueGraphQLFilter,
 } from "joist-orm";
-import { Author, authorMeta, Book, BookId, bookMeta, newAuthor } from "./entities";
-import type { EntityManager } from "./entities";
+import { Author, authorMeta, Book, BookId, bookMeta, Entity, EntityManager, newAuthor } from "./entities";
 
 export type AuthorId = Flavor<string, Author>;
 
 export interface AuthorFields {
-  id: { kind: "primitive"; type: number; unique: true; nullable: false };
-  firstName: { kind: "primitive"; type: string; unique: false; nullable: never };
-  lastName: { kind: "primitive"; type: string; unique: false; nullable: undefined };
-  createdAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
-  updatedAt: { kind: "primitive"; type: Date; unique: false; nullable: never };
+  id: { kind: "primitive"; type: number; unique: true; nullable: never };
+  firstName: { kind: "primitive"; type: string; unique: false; nullable: never; derived: false };
+  lastName: { kind: "primitive"; type: string; unique: false; nullable: undefined; derived: false };
+  createdAt: { kind: "primitive"; type: Date; unique: false; nullable: never; derived: true };
+  updatedAt: { kind: "primitive"; type: Date; unique: false; nullable: never; derived: true };
 }
 
 export interface AuthorOpts {
@@ -52,7 +55,7 @@ export interface AuthorIdsOpts {
 }
 
 export interface AuthorFilter {
-  id?: ValueFilter<AuthorId, never>;
+  id?: ValueFilter<AuthorId, never> | null;
   firstName?: ValueFilter<string, never>;
   lastName?: ValueFilter<string, null>;
   createdAt?: ValueFilter<Date, never>;
@@ -83,7 +86,7 @@ authorConfig.addRule(newRequiredRule("firstName"));
 authorConfig.addRule(newRequiredRule("createdAt"));
 authorConfig.addRule(newRequiredRule("updatedAt"));
 
-export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
+export abstract class AuthorCodegen extends BaseEntity<EntityManager, string> implements Entity {
   static defaultValues: object = {};
   static readonly tagName = "a";
   static readonly metadata: EntityMetadata<Author>;
@@ -98,31 +101,29 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
     factoryOptsType: Parameters<typeof newAuthor>[1];
   };
 
-  readonly books: Collection<Author, Book> = hasMany(bookMeta, "books", "author", "author_id", undefined);
-
   constructor(em: EntityManager, opts: AuthorOpts) {
     super(em, authorMeta, AuthorCodegen.defaultValues, opts);
     setOpts(this as any as Author, opts, { calledFromConstructor: true });
   }
 
   get id(): AuthorId {
-    return this.idMaybe || fail("Author has no id yet");
+    return this.idMaybe || failNoIdYet("Author");
   }
 
   get idMaybe(): AuthorId | undefined {
-    return this.idTaggedMaybe;
+    return toIdOf(authorMeta, this.idTaggedMaybe);
   }
 
-  get idTagged(): AuthorId {
-    return this.idTaggedMaybe || fail("Author has no id tagged yet");
+  get idTagged(): TaggedId {
+    return this.idTaggedMaybe || failNoIdYet("Author");
   }
 
-  get idTaggedMaybe(): AuthorId | undefined {
-    return this.__orm.data["id"];
+  get idTaggedMaybe(): TaggedId | undefined {
+    return getField(this, "id");
   }
 
   get firstName(): string {
-    return this.__orm.data["firstName"];
+    return getField(this, "firstName");
   }
 
   set firstName(firstName: string) {
@@ -130,7 +131,7 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
   }
 
   get lastName(): string | undefined {
-    return this.__orm.data["lastName"];
+    return getField(this, "lastName");
   }
 
   set lastName(lastName: string | undefined) {
@@ -138,11 +139,11 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
   }
 
   get createdAt(): Date {
-    return this.__orm.data["createdAt"];
+    return getField(this, "createdAt");
   }
 
   get updatedAt(): Date {
-    return this.__orm.data["updatedAt"];
+    return getField(this, "updatedAt");
   }
 
   set(opts: Partial<AuthorOpts>): void {
@@ -177,5 +178,10 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager> {
 
   isLoaded<H extends LoadHint<Author>>(hint: H): this is Loaded<Author, H> {
     return isLoaded(this as any as Author, hint);
+  }
+
+  get books(): Collection<Author, Book> {
+    const { relations } = getOrmField(this);
+    return relations.books ??= hasMany(this as any as Author, bookMeta, "books", "author", "author_id", undefined);
   }
 }
