@@ -7,6 +7,10 @@ import { beforeEach, afterAll } from "@jest/globals";
 let knex: Knex;
 export let queries: string[] = [];
 
+export function resetQueries(): void {
+  queries = [];
+}
+
 function getKnex(): Knex {
   if (!knex) {
     knex = createKnex({
