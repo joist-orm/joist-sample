@@ -2665,6 +2665,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dot-prop@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "dot-prop@npm:6.0.1"
+  dependencies:
+    is-obj: ^2.0.0
+  checksum: 0f47600a4b93e1dc37261da4e6909652c008832a5d3684b5bf9a9a0d3f4c67ea949a86dceed9b72f5733ed8e8e6383cc5958df3bbd0799ee317fd181f2ece700
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^8.2.0":
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
@@ -3391,14 +3400,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"indexable-array@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "indexable-array@npm:0.7.0"
+"indexable-array@npm:^0.7.4":
+  version: 0.7.4
+  resolution: "indexable-array@npm:0.7.4"
   dependencies:
-    lodash.set: ^4.3.2
+    dot-prop: ^6.0.1
     sorted-array-functions: ^1.2.0
     tslib: ^2.1.0
-  checksum: 301f114ca093d605350af9dc12ec8059f9f51a9b7fdb96f52411d5ae7bf2b20092650445c0129e89d715ad58315986e2e37593f8b0982a6fa848fa80f8f63e3d
+  checksum: daa9031f63c8a422b76324578776e7956d52285cc1310997ce773fce0d39cf83ea69b2c02be0b474968677a30de98982b39ce6f1dd38280a6698a99fc7f749e6
   languageName: node
   linkType: hard
 
@@ -3570,6 +3579,13 @@ __metadata:
   version: 7.0.0
   resolution: "is-number@npm:7.0.0"
   checksum: 456ac6f8e0f3111ed34668a624e45315201dff921e5ac181f8ec24923b99e9f32ca1a194912dc79d539c97d33dba17dc635202ff0b2cf98326f608323276d27a
+  languageName: node
+  linkType: hard
+
+"is-obj@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "is-obj@npm:2.0.0"
+  checksum: c9916ac8f4621962a42f5e80e7ffdb1d79a3fab7456ceaeea394cd9e0858d04f985a9ace45be44433bf605673c8be8810540fe4cc7f4266fc7526ced95af5a08
   languageName: node
   linkType: hard
 
@@ -4122,9 +4138,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joist-codegen@npm:^1.143.3":
-  version: 1.143.3
-  resolution: "joist-codegen@npm:1.143.3"
+"joist-codegen@npm:^1.148.0":
+  version: 1.148.0
+  resolution: "joist-codegen@npm:1.148.0"
   dependencies:
     "@dprint/formatter": ^0.2.0
     "@dprint/json": 0.15.6
@@ -4135,45 +4151,45 @@ __metadata:
     change-case: ^4.1.2
     fast-glob: ^3.3.2
     inquirer: ^8.2.6
-    joist-utils: 1.143.3
+    joist-utils: 1.148.0
     jscodeshift: ^0.15.1
     knex: ^3.1.0
     pg: ^8.11.3
-    pg-structure: ^7.15.0
+    pg-structure: ^7.15.2
     pluralize: ^8.0.0
     semver: ^7.5.4
     ts-poet: ^6.6.0
     zod: ^3.22.4
-  checksum: 892f93141b9c68d7b946810820e511776f6942c96a0ebcee04058c931cfe67e4ce90c2e645fb337050351a45127f532b5f212341d244c78371d04394960a7eb3
+  checksum: e6d52967567e44727c695d6d3a656c638fb3c9b4c58cdd67eac5bd9a02bd34935dd778b23b7ab4a87d4438d9181f90bd34b066674ea2e37a0b95c1f3f18c358e
   languageName: node
   linkType: hard
 
-"joist-migration-utils@npm:^1.143.3":
-  version: 1.143.3
-  resolution: "joist-migration-utils@npm:1.143.3"
+"joist-migration-utils@npm:^1.148.0":
+  version: 1.148.0
+  resolution: "joist-migration-utils@npm:1.148.0"
   dependencies:
     "@types/pluralize": 0.0.33
-    joist-utils: 1.143.3
+    joist-utils: 1.148.0
     node-pg-migrate: ^6.2.2
     pg: ^8.11.3
-    pg-structure: ^7.15.0
+    pg-structure: ^7.15.2
     pluralize: ^8.0.0
-  checksum: 30f790a56c3936eeec3aa43f1de862910f87936397244905acca8f68be433643379398d7206607ea960cc2ad84a7525d125d585f293ad6ee1f600529f637a4ca
+  checksum: bb95bef60685eeefd73013553d3d31f5de9e6124255257bafafbad9b9fd7a33ca6c08f3168ae556da907092e45f757f8d097aa7c0735342417400316c515cf9d
   languageName: node
   linkType: hard
 
-"joist-orm@npm:^1.143.3":
-  version: 1.143.3
-  resolution: "joist-orm@npm:1.143.3"
+"joist-orm@npm:^1.148.0":
+  version: 1.148.0
+  resolution: "joist-orm@npm:1.148.0"
   dependencies:
     "@types/object-hash": ^3.0.6
     dataloader: ^2.2.2
-    joist-utils: 1.143.3
+    joist-utils: 1.148.0
     knex: ^3.1.0
     object-hash: ^3.0.0
     pg: ^8.11.3
     pg-types: ^4.0.1
-  checksum: 6e7139ffdd37331be96700c8e575f1a62e5747a9dc09b99d62ce99c9e28ebbd2228492c1d1996412c91afd6d6d1fea232b2cd8fb589067a99781f3ee283f0f4e
+  checksum: 93b22b5840588fe00c4cc8a59da81279669f5c3ae7d7718ad85b10f66a328cb21850d209aeec50e8fb7c0eec1cdfac223e7f06a75315f1364901eada9705781f
   languageName: node
   linkType: hard
 
@@ -4187,22 +4203,22 @@ __metadata:
     "@swc/jest": ^0.2.29
     env-cmd: ^10.1.0
     jest: 30.0.0-alpha.2
-    joist-codegen: ^1.143.3
-    joist-migration-utils: ^1.143.3
-    joist-orm: ^1.143.3
+    joist-codegen: ^1.148.0
+    joist-migration-utils: ^1.148.0
+    joist-orm: ^1.148.0
     prettier: ^3.1.1
     tsx: ^4.7.0
     typescript: ^5.3.3
   languageName: unknown
   linkType: soft
 
-"joist-utils@npm:1.143.3":
-  version: 1.143.3
-  resolution: "joist-utils@npm:1.143.3"
+"joist-utils@npm:1.148.0":
+  version: 1.148.0
+  resolution: "joist-utils@npm:1.148.0"
   dependencies:
     pg: ^8.11.3
     pg-connection-string: ^2.6.2
-  checksum: 433de12ab2c2ea3f2494405113fbd84caa80ed81eb4925a983402fb076e99915efb6fd88f5d2d7f02debe8232b870add3d119341abd7835a73024c38c9f6ca14
+  checksum: db778a4d71f3cb0e49ba13a4404b46378283bbfbca71aaeb0fa6890c1894109a7d545a3b199639fda6bc6bd8d902e84a5f565a7ab26a5da6f20b70c33832534f
   languageName: node
   linkType: hard
 
@@ -4375,13 +4391,6 @@ __metadata:
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
-  languageName: node
-  linkType: hard
-
-"lodash.set@npm:^4.3.2":
-  version: 4.3.2
-  resolution: "lodash.set@npm:4.3.2"
-  checksum: a9122f49eef9f2d0fc9061a33d87f8e5b8c6b23d46e8b9e9ce1529d3588d79741bd1145a3abdfa3b13082703e65af27ff18d8a07bfc22b9be32f3fc36f763f70
   languageName: node
   linkType: hard
 
@@ -5045,20 +5054,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-structure@npm:^7.15.0":
-  version: 7.15.0
-  resolution: "pg-structure@npm:7.15.0"
+"pg-structure@npm:^7.15.2":
+  version: 7.15.2
+  resolution: "pg-structure@npm:7.15.2"
   dependencies:
     "@typescript-plus/fast-memoize-decorator": ^0.1.0
     dotenv: ^8.2.0
     fast-memoize: ^2.5.2
-    indexable-array: ^0.7.0
+    indexable-array: ^0.7.4
     inflection: ^1.12.0
     json5: ^2.1.3
     lodash.get: ^4.4.2
     pg: ^8.0.3
     pg-connection-string: ^2.2.1
-  checksum: d8aab55f30ae5d00312aa36122e4995d15630b8e07930b66436ed493bfbcf90783ee729eeb9bef68724164987c9fb18c28a92fb451eebcd576809db23186b389
+  checksum: 7197a37ad254f2cd9d2214e4185a92f9a9d7d58b8ffef601b340674922c8c0537a735836a3ccf3e2797e5a2dd7274811468bd137b4eb3f7419e5d3e3d49ddf23
   languageName: node
   linkType: hard
 
