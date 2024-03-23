@@ -87,7 +87,6 @@ authorConfig.addRule(newRequiredRule("createdAt"));
 authorConfig.addRule(newRequiredRule("updatedAt"));
 
 export abstract class AuthorCodegen extends BaseEntity<EntityManager, string> implements Entity {
-  static defaultValues: object = {};
   static readonly tagName = "a";
   static readonly metadata: EntityMetadata<Author>;
 
@@ -102,7 +101,7 @@ export abstract class AuthorCodegen extends BaseEntity<EntityManager, string> im
   };
 
   constructor(em: EntityManager, opts: AuthorOpts) {
-    super(em, authorMeta, AuthorCodegen.defaultValues, opts);
+    super(em, opts);
     setOpts(this as any as Author, opts, { calledFromConstructor: true });
   }
 
