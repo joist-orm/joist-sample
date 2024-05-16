@@ -22,9 +22,9 @@
     "printWidth": 120
   },
   "dependencies": {
-    "joist-codegen": "^1.151.0",
-    "joist-migration-utils": "^1.151.0",
-    "joist-orm": "^1.151.0"
+    "joist-codegen": "^1.165.2",
+    "joist-migration-utils": "^1.165.2",
+    "joist-orm": "^1.165.2"
   },
   "devDependencies": {
     "@homebound/tsconfig": "^1.1.1",

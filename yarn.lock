@@ -882,10 +882,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dprint/formatter@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@dprint/formatter@npm:0.2.0"
-  checksum: 83507fc3b8f9bff1d8c7e4ca98876e339d84b0138706fbae63374c84eada091259d74a521cde8168829ac848b7a140e021c5de9662944f07063153b80b8b818d
+"@dprint/formatter@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "@dprint/formatter@npm:0.2.1"
+  checksum: a606747832903ebb347ff49295f434c23bbe0288a54299429d267eab1a14eb40b66c0fd2ea556ed3e57c22c2074c728aeecb50260759f41eb651a4f9e85ecfd3
   languageName: node
   linkType: hard
 
@@ -1771,10 +1771,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/semver@npm:^7.5.6":
-  version: 7.5.6
-  resolution: "@types/semver@npm:7.5.6"
-  checksum: 563a0120ec0efcc326567db2ed920d5d98346f3638b6324ea6b50222b96f02a8add3c51a916b6897b51523aad8ac227d21d3dcf8913559f1bfc6c15b14d23037
+"@types/semver@npm:^7.5.8":
+  version: 7.5.8
+  resolution: "@types/semver@npm:7.5.8"
+  checksum: ea6f5276f5b84c55921785a3a27a3cd37afee0111dfe2bcb3e03c31819c197c782598f17f0b150a69d453c9584cd14c4c4d7b9a55d2c5e6cacd4d66fdb3b3663
   languageName: node
   linkType: hard
 
@@ -2681,12 +2681,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dprint-node@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "dprint-node@npm:1.0.7"
+"dprint-node@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "dprint-node@npm:1.0.8"
   dependencies:
     detect-libc: ^1.0.3
-  checksum: cd29f8e2b7de334273b4f53d24072718139635408b015963bcc80829cc785a84591462585b5b569791c8b1420c5672bec7499bda70d7298c58c8a3f43796e659
+  checksum: ac53b71296d155664319877f0e8c9fe94e084457ce9aae68081b9dd7165916f2829222923c59b1399d95680362f18a8da5994e7f76a8f52035e02bbd14ba76bc
   languageName: node
   linkType: hard
 
@@ -4138,58 +4138,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joist-codegen@npm:^1.151.0":
-  version: 1.151.0
-  resolution: "joist-codegen@npm:1.151.0"
+"joist-codegen@npm:^1.165.2":
+  version: 1.165.2
+  resolution: "joist-codegen@npm:1.165.2"
   dependencies:
-    "@dprint/formatter": ^0.2.0
+    "@dprint/formatter": ^0.2.1
     "@dprint/json": 0.15.6
     "@types/inquirer": ^8.2.10
     "@types/jscodeshift": ^0.11.11
     "@types/pluralize": 0.0.33
-    "@types/semver": ^7.5.6
+    "@types/semver": ^7.5.8
     change-case: ^4.1.2
     fast-glob: ^3.3.2
     inquirer: ^8.2.6
-    joist-utils: 1.151.0
-    jscodeshift: ^0.15.1
+    joist-utils: 1.165.2
+    jscodeshift: ^0.15.2
     knex: ^3.1.0
-    pg: ^8.11.3
-    pg-structure: ^7.15.2
+    pg: ^8.11.5
+    pg-structure: ^7.15.3
     pluralize: ^8.0.0
-    semver: ^7.5.4
-    ts-poet: ^6.6.0
+    semver: ^7.6.0
+    ts-poet: ^6.8.1
     zod: ^3.22.4
-  checksum: 190de6dfbe7c1d207e377368bd61547a45c9ae0afc148345da0c91f6496dac8caa20ddf12364daac0b6a761914294bed4365a7f5d1d2adf9cfde4b66095b9a55
+  checksum: 39db27f6f7c1bfa86c83456162424f88a23c10ac347a69dbb96fc6ad4038558f689cd2473b9b753c6d15d04d0199683b68f32c94841ed5cbe248162982372f7d
   languageName: node
   linkType: hard
 
-"joist-migration-utils@npm:^1.151.0":
-  version: 1.151.0
-  resolution: "joist-migration-utils@npm:1.151.0"
+"joist-migration-utils@npm:^1.165.2":
+  version: 1.165.2
+  resolution: "joist-migration-utils@npm:1.165.2"
   dependencies:
     "@types/pluralize": 0.0.33
-    joist-utils: 1.151.0
+    joist-utils: 1.165.2
     node-pg-migrate: ^6.2.2
-    pg: ^8.11.3
-    pg-structure: ^7.15.2
+    pg: ^8.11.5
+    pg-structure: ^7.15.3
     pluralize: ^8.0.0
-  checksum: dc6767958c74f2a67c1c4b44b930d1ec432ebd7b57a7a12255f492ca3e6d01b7ca9aa31de99feb126057f4f2cb822c926caae76c2223b8cdeaa77cd928134f52
+  checksum: f09a72aac6523606108d9c143daadf16a1aef03873edf15872f70c093e1721f2035288535dcb4d8f95813ab5579e8e38359292b5376bbbc0b880cabc7f05c3fd
   languageName: node
   linkType: hard
 
-"joist-orm@npm:^1.151.0":
-  version: 1.151.0
-  resolution: "joist-orm@npm:1.151.0"
+"joist-orm@npm:^1.165.2":
+  version: 1.165.2
+  resolution: "joist-orm@npm:1.165.2"
   dependencies:
     "@types/object-hash": ^3.0.6
     dataloader: ^2.2.2
-    joist-utils: 1.151.0
+    joist-utils: 1.165.2
     knex: ^3.1.0
     object-hash: ^3.0.0
-    pg: ^8.11.3
-    pg-types: ^4.0.1
-  checksum: 8e27faf24e23df5ac3708e12c1a1ab801bd8c1e4ee102e90ed9437e2a5897e6a2c68c498355788bc6e82461e1b428cbdcf61acb8664851f37354f1c05c3b8f9d
+    pg: ^8.11.5
+    pg-types: ^4.0.2
+  checksum: c5d1f42e37e854cb8b918a9eee8023fad756bbe6f467e91de00257851159d0f87304f72a8d99146553a263d8bd8c500db4816e72519b13474de82c2d55245589
   languageName: node
   linkType: hard
 
@@ -4203,22 +4203,22 @@ __metadata:
     "@swc/jest": ^0.2.29
     env-cmd: ^10.1.0
     jest: 30.0.0-alpha.2
-    joist-codegen: ^1.151.0
-    joist-migration-utils: ^1.151.0
-    joist-orm: ^1.151.0
+    joist-codegen: ^1.165.2
+    joist-migration-utils: ^1.165.2
+    joist-orm: ^1.165.2
     prettier: ^3.1.1
     tsx: ^4.7.0
     typescript: ^5.3.3
   languageName: unknown
   linkType: soft
 
-"joist-utils@npm:1.151.0":
-  version: 1.151.0
-  resolution: "joist-utils@npm:1.151.0"
+"joist-utils@npm:1.165.2":
+  version: 1.165.2
+  resolution: "joist-utils@npm:1.165.2"
   dependencies:
-    pg: ^8.11.3
-    pg-connection-string: ^2.6.2
-  checksum: 233888cd58e398c529273db9421dba4d9967555867e1dcbb4affbf50d80c1f6751a9166d65aa2340b6f77ffa201b8d5c2ce0e87db1e643c1035f3cee052df36d
+    pg: ^8.11.5
+    pg-connection-string: ^2.6.4
+  checksum: 0f851fe67ed054e3a75c074d59ee9a5c2b08205faefe3b5d3cdc8e60d099199ec18b913562e1a171af4ac7ba41508631958c4c078184dc8f530552b4eca6cbea
   languageName: node
   linkType: hard
 
@@ -4241,9 +4241,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jscodeshift@npm:^0.15.1":
-  version: 0.15.1
-  resolution: "jscodeshift@npm:0.15.1"
+"jscodeshift@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "jscodeshift@npm:0.15.2"
   dependencies:
     "@babel/core": ^7.23.0
     "@babel/parser": ^7.23.0
@@ -4272,7 +4272,7 @@ __metadata:
       optional: true
   bin:
     jscodeshift: bin/jscodeshift.js
-  checksum: d760dee2b634fa8a4610bdbdf787ce117a9a6bcc73e9ae55a38be77e380698d928d34a375a93ed4685e8bbdecfbd3cdbb87eb4b7e22fc58381db3d59fb554687
+  checksum: e3fa018bfd0ee5b65da1b98797a2536ae8ff0185f0c0d11f9be11e27e1f25ab33a4e17cecc8b73ef520e5d9d8dade98abc49bc0835c024a0f1ff14b48288528b
   languageName: node
   linkType: hard
 
@@ -5024,6 +5024,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pg-connection-string@npm:^2.6.4":
+  version: 2.6.4
+  resolution: "pg-connection-string@npm:2.6.4"
+  checksum: 2c1d2ac1add1f93076f1594d217a0980f79add05dc48de6363e1c550827c78a6ee3e3b5420da9c54858f6b678cdb348aed49732ee68158b6cdb70f1d1c748cf9
+  languageName: node
+  linkType: hard
+
 "pg-int8@npm:1.0.1":
   version: 1.0.1
   resolution: "pg-int8@npm:1.0.1"
@@ -5047,6 +5054,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pg-pool@npm:^3.6.2":
+  version: 3.6.2
+  resolution: "pg-pool@npm:3.6.2"
+  peerDependencies:
+    pg: ">=8.0"
+  checksum: 5ceee4320a35fce08777d085d50a30a1253574257e1e7c5c56c915056d387d340f797115580c8d90a46691f83c39a9b4da1fd810d9ad168cc455c79c289116f4
+  languageName: node
+  linkType: hard
+
 "pg-protocol@npm:*, pg-protocol@npm:^1.6.0":
   version: 1.6.0
   resolution: "pg-protocol@npm:1.6.0"
@@ -5054,9 +5070,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-structure@npm:^7.15.2":
-  version: 7.15.2
-  resolution: "pg-structure@npm:7.15.2"
+"pg-protocol@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "pg-protocol@npm:1.6.1"
+  checksum: cce3f72cc4bdc04db9ce3fa38b2c45b745f0a95a925847b349087f52c02c4d51b7c74d8867e40639699d0c7609accfaffb6b1d221b3268d2bdc4bb8d6a2995a3
+  languageName: node
+  linkType: hard
+
+"pg-structure@npm:^7.15.3":
+  version: 7.15.3
+  resolution: "pg-structure@npm:7.15.3"
   dependencies:
     "@typescript-plus/fast-memoize-decorator": ^0.1.0
     dotenv: ^8.2.0
@@ -5067,7 +5090,7 @@ __metadata:
     lodash.get: ^4.4.2
     pg: ^8.0.3
     pg-connection-string: ^2.2.1
-  checksum: 7197a37ad254f2cd9d2214e4185a92f9a9d7d58b8ffef601b340674922c8c0537a735836a3ccf3e2797e5a2dd7274811468bd137b4eb3f7419e5d3e3d49ddf23
+  checksum: 49574d902b414fe4d1fbb3c7e71499859d1a3296d5e4306b12879877c599084808b35fe151bad9a3120f35b554701d1dd15e8a470bdddb0241eb43e98707b70d
   languageName: node
   linkType: hard
 
@@ -5084,22 +5107,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-types@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "pg-types@npm:4.0.1"
+"pg-types@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "pg-types@npm:4.0.2"
   dependencies:
     pg-int8: 1.0.1
     pg-numeric: 1.0.2
     postgres-array: ~3.0.1
     postgres-bytea: ~3.0.0
-    postgres-date: ~2.0.1
+    postgres-date: ~2.1.0
     postgres-interval: ^3.0.0
     postgres-range: ^1.1.1
-  checksum: 05258ef2f27a75f1bf4e243f36bb749f85148339d3be818147bcc4aebe019ad7589a6869150713140250d81e5a46ec25dc6e0a031ea77e23db5ca232a0d7a3dc
+  checksum: c4b813382d4a75f87462fab3245d5422b86ba1a54a1b330e6b43a459c127b4d02553dc7e5b4ae4fa0f5f17971d416eb393810f69ff6d30d986e45c2f20778c55
   languageName: node
   linkType: hard
 
-"pg@npm:^8.0.3, pg@npm:^8.11.3":
+"pg@npm:^8.0.3":
   version: 8.11.3
   resolution: "pg@npm:8.11.3"
   dependencies:
@@ -5120,6 +5143,28 @@ __metadata:
     pg-native:
       optional: true
   checksum: 8af9468b8969fa0d73a6b349216c8cbc953d938fcae5594f2d24043060e9226a072c8085fc4230172b5576fcab4c39c8563c655f271dc2a9209b6ad5370cafe5
+  languageName: node
+  linkType: hard
+
+"pg@npm:^8.11.5":
+  version: 8.11.5
+  resolution: "pg@npm:8.11.5"
+  dependencies:
+    pg-cloudflare: ^1.1.1
+    pg-connection-string: ^2.6.4
+    pg-pool: ^3.6.2
+    pg-protocol: ^1.6.1
+    pg-types: ^2.1.0
+    pgpass: 1.x
+  peerDependencies:
+    pg-native: ">=3.0.1"
+  dependenciesMeta:
+    pg-cloudflare:
+      optional: true
+  peerDependenciesMeta:
+    pg-native:
+      optional: true
+  checksum: 2317bcc7080f116ced761620b8cbc98175080cacf1e8a894e14f468bcd9c996a7bd5ef36c9db91d380a772667508eb72c42b10206a90cd82b0b4a7669a19f9e4
   languageName: node
   linkType: hard
 
@@ -5236,10 +5281,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postgres-date@npm:~2.0.1":
-  version: 2.0.1
-  resolution: "postgres-date@npm:2.0.1"
-  checksum: 0304bf8641a01412e4f5c3a374604e2e3dbc9dbee71d30df12fe60b32560c5674f887c2d15bafa2996f3b618b617398e7605f0e3669db43f31e614dfe69f8de7
+"postgres-date@npm:~2.1.0":
+  version: 2.1.0
+  resolution: "postgres-date@npm:2.1.0"
+  checksum: 5c573b0602e17c6134fd8bc8ac7689ac0302e1b199f15dd3578fc45186f206dbd0609f97bf0e4bd1db62234d7a37f29c04f4df525f7efebb9304363b2efca272
   languageName: node
   linkType: hard
 
@@ -5559,6 +5604,15 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.6.0":
+  version: 7.6.2
+  resolution: "semver@npm:7.6.2"
+  bin:
+    semver: bin/semver.js
+  checksum: 40f6a95101e8d854357a644da1b8dd9d93ce786d5c6a77227bc69dbb17bea83d0d1d1d7c4cd5920a6df909f48e8bd8a5909869535007f90278289f2451d0292d
   languageName: node
   linkType: hard
 
@@ -5934,12 +5988,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-poet@npm:^6.6.0":
-  version: 6.6.0
-  resolution: "ts-poet@npm:6.6.0"
+"ts-poet@npm:^6.8.1":
+  version: 6.9.0
+  resolution: "ts-poet@npm:6.9.0"
   dependencies:
-    dprint-node: ^1.0.7
-  checksum: 23161ca7ab2de0ffa09802117e242379d89336976800c2813a2711f04d26fabaf31cfb9493a8c4a9a883b07213fead42e98ecb418a762df7dfa84a23ce737252
+    dprint-node: ^1.0.8
+  checksum: 04ee64e2e04614d13646fe08679e2e28993fdd14f4dd822d6993d7d8a93a9e77448f4e31d1b47d42d95f40b04b8adbbe187140be2b9a2027d0fcf151bffffac8
   languageName: node
   linkType: hard
 
